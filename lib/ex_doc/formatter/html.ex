@@ -17,7 +17,6 @@ defmodule ExDoc.Formatter.HTML do
 
     build = Path.join(config.output, ".build")
     output_setup(build, config)
-
     {project_nodes, autolink} = autolink_and_render(project_nodes, ".html", config)
     extras = build_extras(config, autolink)
 
@@ -314,6 +313,16 @@ defmodule ExDoc.Formatter.HTML do
     |> String.trim("-")
     |> String.downcase()
   end
+
+  @doc """
+  Converts the group name to sub_title name
+  """
+  def name_to_subtitle(atom, labels) when is_atom(atom), do: name_to_subtitle(Atom.to_string(atom), labels)
+  def name_to_subtitle(text, _labels) when is_binary(text), do: IO.inspect(text)
+
+  # def name_to_subtitle("Callbacks", labels), do: Map.get(labels, :callbacks)
+  # def name_to_subtitle("Functions", labels), do: Map.get(labels, :functions)
+  # def name_to_subtitle(any, _labels), do: IO.inspect(any)
 
   @doc """
   Generate a link id for the given node.

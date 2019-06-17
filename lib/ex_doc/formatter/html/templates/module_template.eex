@@ -31,9 +31,9 @@
               <span class="icon-link" aria-hidden="true"></span>
               <span class="sr-only">Link to this section</span>
             </a>
-            Summary
+            <%= config.labels.summary %>
           </h1>
-          <%= for {name, nodes} <- summary, do: summary_template(name, nodes) %>
+          <%= for {name, nodes} <- summary, do: summary_template(name, nodes, config.labels) %>
         </section>
       <% end %>
 

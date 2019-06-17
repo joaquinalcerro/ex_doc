@@ -41,10 +41,20 @@ defmodule ExDoc do
       version: vsn,
       main: options[:main],
       homepage_url: options[:homepage_url],
+      labels: options[:labels] || language_labels_defaults(),
       source_root: options[:source_root] || File.cwd!()
     }
 
     struct(preconfig, options)
+  end
+
+  # Sets the default labels when no labels are configured in project
+  defp language_labels_defaults() do
+    %{
+      summary: "Summary",
+      sub_titles: %{callbacks: "Callbacks", functions: "Functions"},
+      functions: "Functions"
+    }
   end
 
   # Short path for programmatic interface

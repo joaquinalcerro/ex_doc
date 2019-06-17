@@ -18,7 +18,7 @@
           </a>
           Summary
         </h1>
-        <%= for {name, nodes} <- summary, do: H.summary_template(name, nodes) %>
+        <%= for {name, nodes} <- summary, do: H.summary_template(name, nodes, config.labels) %>
       </section>
     <% end %>
 

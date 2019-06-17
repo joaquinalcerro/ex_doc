@@ -45,6 +45,7 @@ defmodule ExDoc.Config do
             source_url_pattern: nil,
             title: nil,
             version: nil,
+            labels: nil,
             skip_undefined_reference_warnings_on: []
 
   @type t :: %__MODULE__{

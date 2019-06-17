@@ -69,6 +69,14 @@ defmodule ExDoc.Mixfile do
   defp docs do
     [
       main: "readme",
+      labels: %{
+        summary: "Resumen",
+        sub_titles: %{
+          functions: "Funciones",
+          callbacks: "Llamada reversa"
+        },
+        functions: "Funciones........"
+      },
       extras: [
         "README.md",
         "CHANGELOG.md"

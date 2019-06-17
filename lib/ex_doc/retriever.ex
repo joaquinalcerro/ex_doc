@@ -147,6 +147,7 @@ defmodule ExDoc.Retriever do
       doc_line: doc_line,
       typespecs: Enum.sort_by(types, &{&1.name, &1.arity}),
       source_path: source_path,
+      labels: config.labels,
       source_url: source_link(source, line)
     }
   end
@@ -208,7 +209,8 @@ defmodule ExDoc.Retriever do
     groups_for_functions =
       Enum.map(config.groups_for_functions, fn {group, filter} ->
         {Atom.to_string(group), filter}
-      end) ++ [{"Functions", fn _ -> true end}]
+      # end) ++ [{"Functions", fn _ -> true end}]
+      end) ++ [{"#{config.labels.sub_titles.functions}", fn _ -> true end}]
 
     function_docs =
       for doc <- docs, doc?(doc, type) do
