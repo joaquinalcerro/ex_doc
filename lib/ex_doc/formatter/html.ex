@@ -315,14 +315,19 @@ defmodule ExDoc.Formatter.HTML do
   end
 
   @doc """
-  Converts the group name to sub_title name
+  Converts the group name to language sub_title label from mix.exs
   """
-  def name_to_subtitle(atom, labels) when is_atom(atom), do: name_to_subtitle(Atom.to_string(atom), labels)
-  def name_to_subtitle(text, _labels) when is_binary(text), do: IO.inspect(text)
+  def get_sub_title(atom, config) when is_atom(atom), do: get_sub_title(Atom.to_string(atom), config)
+  def get_sub_title("Functions", config), do: Map.get(config.labels.sub_titles, :functions) || "Functions"
+  def get_sub_title("Callbacks", config), do: Map.get(config.labels.sub_titles, :callbacks) || "Callbacks"
+  def get_sub_title("Types", config), do: Map.get(config.labels.sub_titles, :types) || "Types"
+  def get_sub_title(_any, _config), do: "Update your labels in mix.exs"
 
-  # def name_to_subtitle("Callbacks", labels), do: Map.get(labels, :callbacks)
-  # def name_to_subtitle("Functions", labels), do: Map.get(labels, :functions)
-  # def name_to_subtitle(any, _labels), do: IO.inspect(any)
+  @doc """
+  Converts the summary title to language label name from mix.exs
+  """
+  def get_summary_title(%{labels: %{summary: summary}}), do: summary
+  def get_summary_title(_), do: "Summary"
 
   @doc """
   Generate a link id for the given node.

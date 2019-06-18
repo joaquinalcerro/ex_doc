@@ -72,10 +72,9 @@ defmodule ExDoc.Mixfile do
       labels: %{
         summary: "Resumen",
         sub_titles: %{
-          functions: "Funciones",
-          callbacks: "Llamada reversa"
+          callbacks: "Devoluciones de llamadas"
         },
-        functions: "Funciones........"
+        functions: "Funciones"
       },
       extras: [
         "README.md",
